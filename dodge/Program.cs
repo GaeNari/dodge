@@ -20,8 +20,19 @@ namespace dodge
 
             MainForm form = new MainForm();
             form.ClientSize = new Size(800, 600);
+            form.Show();
 
-            Application.Run(form);
+            DateTime prevUpdateTime = DateTime.Now;
+            while (form.Created)
+            {
+                DateTime updateTime = DateTime.Now;
+                float elapsed = (float)(updateTime - prevUpdateTime).TotalSeconds;
+                form.UpdateWorld(elapsed);
+                form.Invalidate(true);
+                prevUpdateTime = DateTime.Now;
+
+                Application.DoEvents();
+            }
         }
     }
 }
