@@ -8,8 +8,8 @@ namespace dodge
 {
     class Player
     {
-        public int X = 300;
-        public int Y = 300;
+        public int X = 640;
+        public int Y = 360;
 
         public void moveLeft()
         {
