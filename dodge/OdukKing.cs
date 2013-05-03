@@ -14,8 +14,6 @@ namespace dodge
         public int X_speed;
         public int Y_speed;
 
-        public static List<OdukKing> projectiles = new List<OdukKing>();
-
         public OdukKing(int X, int Y, int X_speed, int Y_speed)
         {
             this.X = X;
