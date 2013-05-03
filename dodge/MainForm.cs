@@ -12,12 +12,10 @@ namespace dodge
 {
     public partial class MainForm : Form
     {
-        public MainForm()
-        {
-            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
-            InitializeComponent();
-        }
-        int frame;
+        OdukKing[] odukKings = new OdukKing[70];
+
+        int odukCount = 0;
+
         bool movingLeft = false;
         bool movingRight = false;
         bool movingUp = false;
@@ -25,9 +23,76 @@ namespace dodge
 
         Player player = new Player();
 
-        public void UpdateWorld(float elapsed)
+        
+        public MainForm()
         {
-            frame++;
+            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
+            InitializeComponent();
+        }
+
+        public void UpdateWorld(float elapsed, int frame)
+        {
+
+            int new_X;
+            int new_Y;
+            int new_X_Speed;
+            int new_Y_Speed;
+
+            #region 총알의 위치와 속도를 정하는 부분
+            if (frame % 30 == 0)
+            {
+                if (odukCount > 70)
+                {
+                }
+                else
+                {
+                    Random r = new Random();
+                    if (frame % 2 == 0)
+                    {
+                        if (frame % 4 == 0)
+                        {
+                            new_X = r.Next(0, 1280);
+                            new_Y = 0;
+                            new_X_Speed = 2 * ((player.X - new_X) / Math.Abs(player.X - new_X));
+                            new_Y_Speed = 2 * ((player.Y - new_Y) / Math.Abs(player.Y - new_Y));
+                        }
+                        else
+                        {
+                            new_X = r.Next(0, 1280);
+                            new_Y = 720;
+                            new_X_Speed = 2 * ((player.X - new_X) / Math.Abs(player.X - new_X));
+                            new_Y_Speed = 2 * ((player.Y - new_Y) / Math.Abs(player.Y - new_Y));
+                        }
+                    }
+                    else
+                    {
+                        if (frame % 4 == 1)
+                        {
+                            new_X = 0;
+                            new_Y = r.Next(0, 720);
+                            new_X_Speed = 2 * ((player.X - new_X) / Math.Abs(player.X - new_X));
+                            new_Y_Speed = 2 * ((player.Y - new_Y) / Math.Abs(player.Y - new_Y));
+                        }
+                        else
+                        {
+                            new_X = 1280;
+                            new_Y = r.Next(0, 720);
+                            new_X_Speed = 2 * ((player.X - new_X) / Math.Abs(player.X - new_X));
+                            new_Y_Speed = 2 * ((player.Y - new_Y) / Math.Abs(player.Y - new_Y));
+                        }
+                    }
+                    odukKings[odukCount] = new OdukKing(new_X, new_Y, new_X_Speed, new_Y_Speed);
+                    odukCount++;
+                }
+            }
+            #endregion
+
+            foreach (OdukKing oduk in odukKings)
+            {
+                if (oduk == null) continue;
+                oduk.move();
+            }
+
             if (movingLeft)
             {
                 player.moveLeft();
@@ -45,10 +110,17 @@ namespace dodge
                 player.moveDown();
             }
         }
+     
         public void MainForm_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
             g.Clear(Color.Black);
+            
+            foreach(OdukKing oduk in odukKings)
+            {
+                if (oduk == null) continue;
+                oduk.Draw(g);
+            }
 
             player.Draw(g);
         }

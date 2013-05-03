@@ -18,8 +18,10 @@ namespace dodge
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            int frame = 0;
+
             MainForm form = new MainForm();
-            form.ClientSize = new Size(800, 600);
+            form.ClientSize = new Size(1280,720);
             form.Show();
 
             DateTime prevUpdateTime = DateTime.Now;
@@ -27,7 +29,8 @@ namespace dodge
             {
                 DateTime updateTime = DateTime.Now;
                 float elapsed = (float)(updateTime - prevUpdateTime).TotalSeconds;
-                form.UpdateWorld(elapsed);
+                form.UpdateWorld(elapsed, frame);
+                frame++;
                 form.Invalidate(true);
                 prevUpdateTime = DateTime.Now;
 
