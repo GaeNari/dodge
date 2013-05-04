@@ -63,14 +63,18 @@ namespace dodge
                         if (frame % 4 == 0)
                         {
                             new_X = r.Next(10, 1270);
+                            if (new_X == player.X) new_X--;
                             new_Y = 10;
+                            if (new_Y == player.Y) new_Y--;
                             new_X_Speed = 2 * ((player.X - new_X) / Math.Abs(player.X - new_X));
                             new_Y_Speed = 2 * ((player.Y - new_Y) / Math.Abs(player.Y - new_Y));
                         }
                         else
                         {
                             new_X = r.Next(10, 1270);
+                            if (new_X == player.X) new_X--;
                             new_Y = 710;
+                            if (new_Y == player.Y) new_Y--;
                             new_X_Speed = 2 * ((player.X - new_X) / Math.Abs(player.X - new_X));
                             new_Y_Speed = 2 * ((player.Y - new_Y) / Math.Abs(player.Y - new_Y));
                         }
@@ -80,14 +84,18 @@ namespace dodge
                         if (frame % 4 == 1)
                         {
                             new_X = 10;
+                            if (new_X == player.X) new_X--;
                             new_Y = r.Next(10, 710);
+                            if (new_Y == player.Y) new_Y--;
                             new_X_Speed = 2 * ((player.X - new_X) / Math.Abs(player.X - new_X));
                             new_Y_Speed = 2 * ((player.Y - new_Y) / Math.Abs(player.Y - new_Y));
                         }
                         else
                         {
                             new_X = 1270;
+                            if (new_X == player.X) new_X--;
                             new_Y = r.Next(10, 710);
+                            if (new_Y == player.Y) new_Y--;
                             new_X_Speed = 2 * ((player.X - new_X) / Math.Abs(player.X - new_X));
                             new_Y_Speed = 2 * ((player.Y - new_Y) / Math.Abs(player.Y - new_Y));
                         }
@@ -139,7 +147,7 @@ namespace dodge
         public void MainForm_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.Clear(Color.Black);
+            g.Clear(Color.Pink);
             
             foreach(OdukKing oduk in odukKings)
             {
