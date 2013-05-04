@@ -28,6 +28,16 @@ namespace dodge
             Y += Y_speed;
         }
 
+        public void X_reflect()
+        {
+            this.Y_speed = -this.Y_speed;
+        }
+
+        public void Y_reflect()
+        {
+            this.X_speed = -this.X_speed;
+        }
+
         public void Draw(Graphics g)
         {
             Image im = Properties.Resources.odukking;

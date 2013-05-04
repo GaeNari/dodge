@@ -12,7 +12,7 @@ namespace dodge
 {
     public partial class MainForm : Form
     {
-        OdukKing[] odukKings = new OdukKing[80];
+        OdukKing[] odukKings = new OdukKing[100];
 
         int odukCount = 0;
 
@@ -37,6 +37,7 @@ namespace dodge
             int new_X_Speed;
             int new_Y_Speed;
 
+            #region Collision Check
             foreach (OdukKing oduk in odukKings)
             {
                 if (oduk == null) continue;
@@ -46,10 +47,12 @@ namespace dodge
                     this.Close();
                 }
             }
-            #region 새로운 오덕왕을 생성하는 부분
+            #endregion
+
+            #region Make New Odukking and Move Oduks
             if (frame % 30 == 0)
             {
-                if (odukCount > 70)
+                if (odukCount > 95)
                 {
                 }
                 else
@@ -59,15 +62,15 @@ namespace dodge
                     {
                         if (frame % 4 == 0)
                         {
-                            new_X = r.Next(0, 1280);
-                            new_Y = 0;
+                            new_X = r.Next(10, 1270);
+                            new_Y = 10;
                             new_X_Speed = 2 * ((player.X - new_X) / Math.Abs(player.X - new_X));
                             new_Y_Speed = 2 * ((player.Y - new_Y) / Math.Abs(player.Y - new_Y));
                         }
                         else
                         {
-                            new_X = r.Next(0, 1280);
-                            new_Y = 720;
+                            new_X = r.Next(10, 1270);
+                            new_Y = 710;
                             new_X_Speed = 2 * ((player.X - new_X) / Math.Abs(player.X - new_X));
                             new_Y_Speed = 2 * ((player.Y - new_Y) / Math.Abs(player.Y - new_Y));
                         }
@@ -76,15 +79,15 @@ namespace dodge
                     {
                         if (frame % 4 == 1)
                         {
-                            new_X = 0;
-                            new_Y = r.Next(0, 720);
+                            new_X = 10;
+                            new_Y = r.Next(10, 710);
                             new_X_Speed = 2 * ((player.X - new_X) / Math.Abs(player.X - new_X));
                             new_Y_Speed = 2 * ((player.Y - new_Y) / Math.Abs(player.Y - new_Y));
                         }
                         else
                         {
-                            new_X = 1280;
-                            new_Y = r.Next(0, 720);
+                            new_X = 1270;
+                            new_Y = r.Next(10, 710);
                             new_X_Speed = 2 * ((player.X - new_X) / Math.Abs(player.X - new_X));
                             new_Y_Speed = 2 * ((player.Y - new_Y) / Math.Abs(player.Y - new_Y));
                         }
@@ -93,14 +96,27 @@ namespace dodge
                     odukCount++;
                 }
             }
-            #endregion
-
+            foreach (OdukKing oduk in odukKings)
+            {
+                if (oduk == null) continue;
+                if (oduk.X < 2 | oduk.X > 1278)
+                {
+                    oduk.Y_reflect();
+                }
+                if (oduk.Y < 2 | oduk.Y > 718)
+                {
+                    oduk.X_reflect();
+                }
+            }
+            
             foreach (OdukKing oduk in odukKings)
             {
                 if (oduk == null) continue;
                 oduk.move();
             }
-            #region 플레이어 이동
+            #endregion
+
+            #region Player Moving
             if (movingLeft)
             {
                 player.moveLeft();
