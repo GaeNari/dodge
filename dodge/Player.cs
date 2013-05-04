@@ -13,19 +13,19 @@ namespace dodge
 
         public void moveLeft()
         {
-            this.X -= 3;
+            this.X -= 2;
         }
         public void moveRight()
         {
-            this.X += 3;
+            this.X += 2;
         }
         public void moveUp()
         {
-            this.Y -= 3;
+            this.Y -= 2;
         }
         public void moveDown()
         {
-            this.Y += 3;
+            this.Y += 2;
         }
 
         public void Draw(Graphics g)
