@@ -12,7 +12,7 @@ namespace dodge
 {
     public partial class MainForm : Form
     {
-        OdukKing[] odukKings = new OdukKing[70];
+        OdukKing[] odukKings = new OdukKing[80];
 
         int odukCount = 0;
 
@@ -32,13 +32,21 @@ namespace dodge
 
         public void UpdateWorld(float elapsed, int frame)
         {
-
             int new_X;
             int new_Y;
             int new_X_Speed;
             int new_Y_Speed;
 
-            #region 총알의 위치와 속도를 정하는 부분
+            foreach (OdukKing oduk in odukKings)
+            {
+                if (oduk == null) continue;
+                if (((oduk.X - player.X) * (oduk.X - player.X) + (oduk.Y - player.Y) * (oduk.Y - player.Y)) <= 841)
+                {
+                    MessageBox.Show("당신은 오덕왕에게 잡혔습니다. 오덕왕이 당신을 먹어버렸습니다 ㅠㅠ");
+                    this.Close();
+                }
+            }
+            #region 새로운 오덕왕을 생성하는 부분
             if (frame % 30 == 0)
             {
                 if (odukCount > 70)
@@ -92,7 +100,7 @@ namespace dodge
                 if (oduk == null) continue;
                 oduk.move();
             }
-
+            #region 플레이어 이동
             if (movingLeft)
             {
                 player.moveLeft();
@@ -109,6 +117,7 @@ namespace dodge
             {
                 player.moveDown();
             }
+            #endregion
         }
      
         public void MainForm_Paint(object sender, PaintEventArgs e)
