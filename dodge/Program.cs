@@ -21,7 +21,7 @@ namespace dodge
             int frame = 0;
 
             MainForm form = new MainForm();
-            form.ClientSize = new Size(1280,720);
+            form.ClientSize = new Size(1024,768);
             form.Show();
 
             DateTime prevUpdateTime = DateTime.Now;

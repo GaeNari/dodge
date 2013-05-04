@@ -62,18 +62,18 @@ namespace dodge
                     {
                         if (frame % 4 == 0)
                         {
-                            new_X = r.Next(10, 1270);
+                            new_X = r.Next(5,980);
                             if (new_X == player.X) new_X--;
-                            new_Y = 10;
+                            new_Y = 5;
                             if (new_Y == player.Y) new_Y--;
                             new_X_Speed = 2 * ((player.X - new_X) / Math.Abs(player.X - new_X));
                             new_Y_Speed = 2 * ((player.Y - new_Y) / Math.Abs(player.Y - new_Y));
                         }
                         else
                         {
-                            new_X = r.Next(10, 1270);
+                            new_X = r.Next(5, 980);
                             if (new_X == player.X) new_X--;
-                            new_Y = 710;
+                            new_Y = 720;
                             if (new_Y == player.Y) new_Y--;
                             new_X_Speed = 2 * ((player.X - new_X) / Math.Abs(player.X - new_X));
                             new_Y_Speed = 2 * ((player.Y - new_Y) / Math.Abs(player.Y - new_Y));
@@ -83,18 +83,18 @@ namespace dodge
                     {
                         if (frame % 4 == 1)
                         {
-                            new_X = 10;
+                            new_X = 5;
                             if (new_X == player.X) new_X--;
-                            new_Y = r.Next(10, 710);
+                            new_Y = r.Next(5, 720);
                             if (new_Y == player.Y) new_Y--;
                             new_X_Speed = 2 * ((player.X - new_X) / Math.Abs(player.X - new_X));
                             new_Y_Speed = 2 * ((player.Y - new_Y) / Math.Abs(player.Y - new_Y));
                         }
                         else
                         {
-                            new_X = 1270;
+                            new_X = 980;
                             if (new_X == player.X) new_X--;
-                            new_Y = r.Next(10, 710);
+                            new_Y = r.Next(5, 720);
                             if (new_Y == player.Y) new_Y--;
                             new_X_Speed = 2 * ((player.X - new_X) / Math.Abs(player.X - new_X));
                             new_Y_Speed = 2 * ((player.Y - new_Y) / Math.Abs(player.Y - new_Y));
@@ -107,19 +107,14 @@ namespace dodge
             foreach (OdukKing oduk in odukKings)
             {
                 if (oduk == null) continue;
-                if (oduk.X < 2 | oduk.X > 1278)
+                if (oduk.X < 4 | oduk.X > 995)
                 {
                     oduk.Y_reflect();
                 }
-                if (oduk.Y < 2 | oduk.Y > 718)
+                if (oduk.Y < 4 | oduk.Y > 724)
                 {
                     oduk.X_reflect();
                 }
-            }
-            
-            foreach (OdukKing oduk in odukKings)
-            {
-                if (oduk == null) continue;
                 oduk.move();
             }
             #endregion
