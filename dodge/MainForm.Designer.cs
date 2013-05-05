@@ -39,6 +39,7 @@
             this.Text = "MainForm";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainForm_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MainForm_KeyPress);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyUp);
             this.ResumeLayout(false);
 

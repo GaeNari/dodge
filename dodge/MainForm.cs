@@ -15,6 +15,7 @@ namespace dodge
         OdukKing[] odukKings = new OdukKing[100];
 
         int odukCount = 0;
+        int skillCount = 0;
 
         bool movingLeft = false;
         bool movingRight = false;
@@ -180,6 +181,19 @@ namespace dodge
                     movingUp = false; break;
                 case Keys.Down:
                     movingDown = false; break;
+            }
+        }
+
+        private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            switch (e.KeyChar)
+            {
+                case 'x':
+                    if (skillCount >= 3) break;
+                    player.skill(odukKings);
+                    odukCount = 0;
+                    skillCount++;
+                    break;
             }
         }
     }

@@ -27,7 +27,14 @@ namespace dodge
         {
             this.Y += 2;
         }
-
+        public void skill(OdukKing[] odukKings)
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                if (odukKings[i] == null) continue;
+                odukKings[i] = null;
+            }
+        }
         public void Draw(Graphics g)
         {
             Image im = Properties.Resources.munchul;
