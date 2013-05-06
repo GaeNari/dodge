@@ -22,10 +22,10 @@ namespace dodge
             this.Y_speed = Y_speed;
         }
 
-        public void move()
+        public void move(float elapsed)
         {
-            X += X_speed;
-            Y += Y_speed;
+            X += (int)(X_speed * elapsed);
+            Y += (int)(Y_speed * elapsed);
         }
 
         public void X_reflect()

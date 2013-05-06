@@ -11,21 +11,21 @@ namespace dodge
         public int X = 640;
         public int Y = 360;
 
-        public void moveLeft()
+        public void moveLeft(float elapsed)
         {
-            this.X -= 2;
+            this.X -= (int)(200 * elapsed);
         }
-        public void moveRight()
+        public void moveRight(float elapsed)
         {
-            this.X += 2;
+            this.X += (int)(200 * elapsed);
         }
-        public void moveUp()
+        public void moveUp(float elapsed)
         {
-            this.Y -= 2;
+            this.Y -= (int)(200 * elapsed);
         }
-        public void moveDown()
+        public void moveDown(float elapsed)
         {
-            this.Y += 2;
+            this.Y += (int)(200 * elapsed);
         }
         public void skill(OdukKing[] odukKings)
         {

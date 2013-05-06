@@ -67,32 +67,32 @@ namespace dodge
                             if (new_X == player.X) new_X--;
                             new_Y = 5;
                             if (new_Y == player.Y) new_Y--;
-                            new_X_Speed = 2 * ((player.X - new_X) / Math.Abs(player.X - new_X));
-                            new_Y_Speed = 2 * ((player.Y - new_Y) / Math.Abs(player.Y - new_Y));
+                            new_X_Speed = 200 * ((player.X - new_X) / Math.Abs(player.X - new_X));
+                            new_Y_Speed = 200 * ((player.Y - new_Y) / Math.Abs(player.Y - new_Y));
                             break;
                         case 1:
                             new_X = r.Next(5, 980);
                             if (new_X == player.X) new_X--;
                             new_Y = 720;
                             if (new_Y == player.Y) new_Y--;
-                            new_X_Speed = 2 * ((player.X - new_X) / Math.Abs(player.X - new_X));
-                            new_Y_Speed = 2 * ((player.Y - new_Y) / Math.Abs(player.Y - new_Y));
+                            new_X_Speed = 200 * ((player.X - new_X) / Math.Abs(player.X - new_X));
+                            new_Y_Speed = 200 * ((player.Y - new_Y) / Math.Abs(player.Y - new_Y));
                             break;
                         case 2:
                             new_X = 5;
                             if (new_X == player.X) new_X--;
                             new_Y = r.Next(5, 720);
                             if (new_Y == player.Y) new_Y--;
-                            new_X_Speed = 2 * ((player.X - new_X) / Math.Abs(player.X - new_X));
-                            new_Y_Speed = 2 * ((player.Y - new_Y) / Math.Abs(player.Y - new_Y));
+                            new_X_Speed = 200 * ((player.X - new_X) / Math.Abs(player.X - new_X));
+                            new_Y_Speed = 200 * ((player.Y - new_Y) / Math.Abs(player.Y - new_Y));
                             break;
                         default:
                             new_X = 980;
                             if (new_X == player.X) new_X--;
                             new_Y = r.Next(5, 720);
                             if (new_Y == player.Y) new_Y--;
-                            new_X_Speed = 2 * ((player.X - new_X) / Math.Abs(player.X - new_X));
-                            new_Y_Speed = 2 * ((player.Y - new_Y) / Math.Abs(player.Y - new_Y));
+                            new_X_Speed = 200 * ((player.X - new_X) / Math.Abs(player.X - new_X));
+                            new_Y_Speed = 200 * ((player.Y - new_Y) / Math.Abs(player.Y - new_Y));
                             break;
                     }
                     odukKings[odukCount] = new OdukKing(new_X, new_Y, new_X_Speed, new_Y_Speed);
@@ -111,26 +111,26 @@ namespace dodge
                 {
                     oduk.X_reflect();
                 }
-                oduk.move();
+                oduk.move(elapsed);
             }
             #endregion
 
             #region Player Moving
             if (movingLeft)
             {
-                player.moveLeft();
+                player.moveLeft(elapsed);
             }
             if (movingRight)
             {
-                player.moveRight();
+                player.moveRight(elapsed);
             }
             if (movingUp)
             {
-                player.moveUp();
+                player.moveUp(elapsed);
             }
             if (movingDown)
             {
-                player.moveDown();
+                player.moveDown(elapsed);
             }
             #endregion
         }
