@@ -33,10 +33,10 @@ namespace dodge
 
         public void UpdateWorld(float elapsed, int frame)
         {
-            int new_X;
-            int new_Y;
-            int new_X_Speed;
-            int new_Y_Speed;
+            float new_X;
+            float new_Y;
+            float new_X_Speed;
+            float new_Y_Speed;
 
             #region Collision Check
             foreach (OdukKing oduk in odukKings)

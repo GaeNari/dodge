@@ -8,24 +8,24 @@ namespace dodge
 {
     class Player
     {
-        public int X = 640;
-        public int Y = 360;
+        public float X = 640;
+        public float Y = 360;
 
         public void moveLeft(float elapsed)
         {
-            this.X -= (int)(200 * elapsed);
+            this.X -= (200 * elapsed);
         }
         public void moveRight(float elapsed)
         {
-            this.X += (int)(200 * elapsed);
+            this.X += (200 * elapsed);
         }
         public void moveUp(float elapsed)
         {
-            this.Y -= (int)(200 * elapsed);
+            this.Y -= (200 * elapsed);
         }
         public void moveDown(float elapsed)
         {
-            this.Y += (int)(200 * elapsed);
+            this.Y += (200 * elapsed);
         }
         public void skill(OdukKing[] odukKings)
         {
@@ -38,7 +38,7 @@ namespace dodge
         public void Draw(Graphics g)
         {
             Image im = Properties.Resources.munchul;
-            g.DrawImage(im, new Point(X - im.Width / 2, Y - im.Height / 2));
+            g.DrawImage(im, new Point((int)(X - im.Width / 2), (int)(Y - im.Height / 2)));
         }
     }
 }

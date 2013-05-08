@@ -8,13 +8,13 @@ namespace dodge
 {
     class OdukKing
     {
-        public int X;
-        public int Y;
+        public float X;
+        public float Y;
 
-        public int X_speed;
-        public int Y_speed;
+        public float X_speed;
+        public float Y_speed;
 
-        public OdukKing(int X, int Y, int X_speed, int Y_speed)
+        public OdukKing(float X, float Y, float X_speed, float Y_speed)
         {
             this.X = X;
             this.Y = Y;
@@ -24,8 +24,8 @@ namespace dodge
 
         public void move(float elapsed)
         {
-            X += (int)(X_speed * elapsed);
-            Y += (int)(Y_speed * elapsed);
+            X += (X_speed * elapsed);
+            Y += (Y_speed * elapsed);
         }
 
         public void X_reflect()
@@ -41,7 +41,7 @@ namespace dodge
         public void Draw(Graphics g)
         {
             Image im = Properties.Resources.odukking;
-            g.DrawImage(im,new Point(X - im.Width / 2, Y - im.Height / 2));
+            g.DrawImage(im,new Point((int)(X - im.Width / 2), (int)(Y - im.Height / 2)));
         }
     }
 }
